@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,72 +7,154 @@
 }
 
 body {
-  font-family: "Georgia", "Times New Roman", serif;
-  background: #fafaf7;
-  color: #2c2c2c;
-  line-height: 1.7;
+  font-family: "Inter", -apple-system, sans-serif;
+  background: #0e0e10;
+  color: #e4e4e7;
+  line-height: 1.75;
   min-height: 100vh;
 }
 
+/* subtle grain texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+  pointer-events: none;
+  z-index: 100;
+}
+
 header {
-  padding: 3rem 1.5rem 2rem;
+  padding: 5rem 2rem 3rem;
   text-align: center;
-  border-bottom: 1px solid #e8e6e1;
+  position: relative;
+}
+
+header::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #555, transparent);
+  margin: 2.5rem auto 0;
 }
 
 header h1 {
-  font-size: 1.6rem;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 2.2rem;
   font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  color: #fff;
 }
 
 header p {
-  margin-top: 0.4rem;
-  font-size: 0.85rem;
-  color: #888;
-  font-style: italic;
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  color: #6b6b74;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
 main {
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
+  padding: 3rem 1.5rem 5rem;
 }
 
 article {
-  margin-bottom: 2.5rem;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid #e8e6e1;
+  margin-bottom: 3rem;
+  padding: 2rem 2.2rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
-article:last-child {
-  border-bottom: none;
+article:hover {
+  border-color: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
 }
 
 article time {
-  font-size: 0.78rem;
-  color: #aaa;
-  letter-spacing: 0.04em;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.72rem;
+  color: #555;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 article h2 {
-  font-size: 1.15rem;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.3rem;
   font-weight: 600;
-  margin: 0.4rem 0 0.6rem;
+  margin: 0.6rem 0 0.8rem;
+  color: #f0f0f3;
+  line-height: 1.4;
 }
 
 article .body {
-  font-size: 0.98rem;
-  color: #444;
+  font-size: 0.92rem;
+  color: #9a9aa5;
   white-space: pre-line;
+  line-height: 1.8;
+  font-weight: 300;
 }
 
 footer {
   text-align: center;
-  padding: 2rem;
-  font-size: 0.75rem;
-  color: #bbb;
-  border-top: 1px solid #e8e6e1;
+  padding: 3rem 2rem;
+  font-size: 0.7rem;
+  color: #333;
+  letter-spacing: 0.08em;
+}
+
+/* fade-in animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+article {
+  animation: fadeUp 0.6s ease both;
+}
+
+article:nth-child(1) { animation-delay: 0.1s; }
+article:nth-child(2) { animation-delay: 0.2s; }
+article:nth-child(3) { animation-delay: 0.3s; }
+article:nth-child(4) { animation-delay: 0.4s; }
+article:nth-child(5) { animation-delay: 0.5s; }
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2e;
+  border-radius: 3px;
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  header {
+    padding: 3.5rem 1.5rem 2rem;
+  }
+  header h1 {
+    font-size: 1.7rem;
+  }
+  article {
+    padding: 1.5rem 1.4rem;
+    margin-bottom: 1.5rem;
+  }
 }
