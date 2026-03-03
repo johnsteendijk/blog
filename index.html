@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John Steendijk</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>john steendijk</h1>
+    <p>short texts</p>
+  </header>
+  <main id="posts"></main>
+  <footer>&copy; 2026</footer>
+  <script src="posts.js"></script>
+  <script>
+    const main = document.getElementById("posts");
+    posts.forEach(post => {
+      const article = document.createElement("article");
+      article.innerHTML = `
+        <time>${post.date}</time>
+        <h2>${post.title}</h2>
+        <div class="body">${post.body}</div>
+      `;
+      main.appendChild(article);
+    });
+  </script>
+</body>
+</html>
